@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { X } from 'lucide-react';
 
 interface ImageModalProps {
@@ -13,10 +14,17 @@ export const ImageModal: React.FC<ImageModalProps> = ({ imageUrl, onClose }) => 
       if (e.key === 'Escape') onClose();
     };
     window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
+    
+    // Prevent scrolling on body when modal is open
+    document.body.style.overflow = 'hidden';
+    
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+      document.body.style.overflow = 'unset';
+    };
   }, [onClose]);
 
-  return (
+  return createPortal(
     <div className="modal-backdrop" onClick={onClose}>
       <div className="modal-content" onClick={(e) => e.stopPropagation()}>
         <button className="modal-close-btn shadow-sm" onClick={onClose} aria-label="Close modal">
@@ -33,6 +41,7 @@ export const ImageModal: React.FC<ImageModalProps> = ({ imageUrl, onClose }) => 
           <img src={imageUrl} alt="Certificate Full View" className="modal-image shadow-lg" />
         )}
       </div>
-    </div>
+    </div>,
+    document.body
   );
 };
