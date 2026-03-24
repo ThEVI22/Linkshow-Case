@@ -57,7 +57,7 @@ function App() {
   const user = {
     name: "Thevindu Dilmith Wickramarathne",
     subtitle: "Cyber Security & Full-Stack Development | BSc (Hons) Cyber Security Undergraduate @ APIIT. Bridging the gap between offensive security and secure app development. Lead Security Architect of Project Neon Silence and creator of the Fixit Lanka ecosystem. I leverage AI to drive technical research and solve complex logic problems.",
-    avatarUrl: "/fav icon.jpg" 
+    avatarUrl: "/Avater.jpg" 
   };
 
   const certificates = [
@@ -133,7 +133,7 @@ function App() {
         </div>
         
         <div className="cover-wrapper">
-          <img src="/placeholder-cover.png" alt="Cover Graphic" className="cover-image" />
+          <img src="/Cover.jpg" alt="Cover Graphic" className="cover-image" />
         </div>
 
         <Profile 
